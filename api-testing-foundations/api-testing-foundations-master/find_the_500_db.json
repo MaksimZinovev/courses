@@ -1,0 +1,49 @@
+{
+  "blogposts": [
+    {
+      "id": 1,
+      "title": "The FIRST blog post",
+      "body": "This is my first blog post"
+    },
+    {
+      "id": 2,
+      "title": "The FIRST blog post",
+      "body": "This is my 4 blog post",
+      "profileId": 0
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "blogpostId": 1
+    },
+    {
+      "id": 2,
+      "body": "some new comment",
+      "blogpostId": 1
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "name": "John Smith"
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "avatars": [
+    {
+      "id": 1,
+      "description": "A Public avatar?",
+      "url": "www.example.com/avatar.jpg",
+      "profileId": 1,
+      "commentId": 1,
+      "blogpostId": null
+    }
+  ]
+}

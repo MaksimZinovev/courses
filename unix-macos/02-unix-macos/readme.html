@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>readme</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="unix-macos">02-unix-macos</h1>
+<p>Notes that I’ve been taking while doing Unix for MacOS Users course by Kevin Skoglund</p>
+<p>#!/bin/bash</p>
+<p>Contents</p>
+<p><a href="#command-examples">Command examples</a><br />
+Unix manual pages()<br />
+Working directory<br />
+Listing directory contents<br />
+Moving around filesystem<br />
+Creat files<br />
+Text editor<br />
+Reading files<br />
+Hacks and Useful examples<br />
+Create directory<br />
+Moving and renaming directories<br />
+Copying files and directories<br />
+Deleting files and directories<br />
+Finder aliases in Unix<br />
+<a href="#hard-links">Hard links</a><br />
+<a href="#symbolic-links">Symbolic links</a><br />
+<a href="#searching-files-and-directories">Searching files and directories</a> <a href="#ownership-and-permissions">Ownership and permissions</a></p>
+<h1 id="command-examples">#command-examples</h1>
+<p><code>echo "Hello World"</code> -&gt; print text in terminal <code>ruby -v</code> -&gt; show version <code>ruby --version</code> -&gt; show version ls -la Desktop -&gt; list directory contents man -ls -&gt; format and display the on-line manual pages echo $SHELL - &gt; show login (default) shell echo $0 - &gt; show current shell Cmd+K - clear buffer</p>
+<h1 id="unix-manual-pages">Unix manual pages</h1>
+<p>man echo - manual page for echo q - &gt; exit f -&gt;forward b -&gt; backward man –h -&gt; manual quick overview man -k banner - &gt; same as apropos - searches the whatis database for strings (search in manual pages) whatis ls - &gt;search whatis database for complete words</p>
+<h1 id="working-directory">Working directory</h1>
+<p>pwd -&gt; present working directory Listing directory contents ls ls -l -&gt; vertical ls -la -&gt; shows hidden files ls -lag -&gt; shows size</p>
+<h1 id="moving-around-filesystem">Moving around filesystem</h1>
+<p>cd Desktop/ -&gt; nav to Desktop cd .. -&gt; nav to parent of current dir cd Lib+TAB -&gt; autocomplete name of directory cd / -&gt; rood dir cd ~ -&gt; nav to user’s root dir cd - -&gt; nav to most recent dir</p>
+<h1 id="creat-files">Creat files</h1>
+<p>touch somefile.txt - &gt; change file access and modification time. also can be used to create file - creates file if it does not exist Text editor nano - &gt; start editor Ctr+X -&gt; exit nano newfie.txt -&gt;</p>
+<h1 id="reading-files">Reading files</h1>
+<p>cat shortfile.txt -&gt; read file - one file name(all output is read for once) cat lorem_ipsup.txt shortfile.txt -&gt; concatenate files more -&gt;paginated output less shortfile.txt -&gt; allows to go through pages forward and backward, better memory use q -&gt; exit f -&gt; forward b -&gt; backward g -&gt; go to beginning shift+g -&gt; go to end less -M shortfile.txt -&gt; shows where currently in document head less shortfile.txt -&gt; display lines from beginning of a file tail less shortfile.txt -&gt; display lines from end of a file tail -f shortfile.txt -&gt; follow the tail of a file ctr+c - &gt; exit from head/tail</p>
+<h1 id="hacks-and-useful-examples">Hacks and Useful examples</h1>
+<p>tail -f /var/log/system.log -&gt; read system log file</p>
+<h1 id="how-to-find-and-delete-launch-agents">How to find and delete launch agents</h1>
+<p>https://discussions.apple.com/thread/7497755 turn off Adobe launcher sudo launchctl unload -w /Library/LaunchDaemons/com.adobe.*.plist launchctl unload -w disables each service in the override database https://www.launchd.info/ launchd tutorial iTerm 2 - Shell Integration https://iterm2.com/documentation-shell-integration.html</p>
+<h2 id="create-directory">Create directory</h2>
+<p>mkdir testdir -&gt; create directory mkdir -p testdir/dir2 -&gt; create 2 directories Moving and renaming directories mv demofile.txt testdir/ -&gt; move file from current dir to testdir mv demofile.txt ../demofile.txt -&gt; move file to parent dir mv demofile.txt .. -&gt; move file to parent mv demofile.txt new_demofile.txt -&gt; rename file mv demofile.txt testdir/new_demofile.txt -&gt; move and rename file mv testdir unix_files -&gt;rename dir mv options -n -&gt; no overiting -f -&gt; force overwritning (default option) -i -&gt; interactive overwriting -v -&gt; verbose</p>
+<h1 id="copying-files-and-directories">Copying files and directories</h1>
+<p>cp demofile.txt demofile2.txt -&gt; copy from 1st to 2nd cp options -n -&gt; no overiting -f -&gt; force overwritning (default option) -i -&gt; interactive overwriting -v -&gt; verbose</p>
+<h1 id="deleting-files-and-directories">Deleting files and directories</h1>
+<p>rm demofile.txt - &gt; delete file rmdir delete_me -&gt; delete dir (works for empty only) rm -R delete_me -&gt; delete dir and all subdirectories</p>
+<h1 id="finder-aliases-in-unix">Finder aliases in Unix</h1>
+<p>Aliases created in Finder cannot be used in terminal</p>
+<h1 id="hard-links">hard-links</h1>
+<p>do not break if file is deleted do not break if file is moved ln linkedfile.txt hardlink -&gt; create hard link</p>
+<h1 id="symbolic-links-they-work-in-finder">symbolic-links (they work in finder)</h1>
+<p><code>▶ ln -s linkedfile.txt symlink</code> lrwxr-xr-x 1 maksim staff 14 26 Nov 22:34 symlink -&gt; linkedfile.txt</p>
+<p><strong>reference a file path or dir path</strong> <strong>break if file is moved</strong> <strong>break if file is deleted</strong></p>
+<h1 id="searching-files-and-directories">searching-files-and-directories</h1>
+<p>find path expression wildcards [] - any character in the bracket <code>find / -name "index.????"</code> <code>find ~/ -name *.plist</code> <code>find ~ -name *.plist -and -path *QuickTime*</code></p>
+<h1 id="ownership-and-permissions">ownership-and-permissions</h1>
+<p>you can log in as user or as “root” <code>▶ whoami</code><br />
+maksim</p>
+<p>user’s home directory<br />
+<code>▶ cd ~</code></p>
+<p><code>▶ echo $HOME</code><br />
+/Users/maksim</p>
+<h1 id="groups">groups</h1>
+<p><code>▶ groups</code><br />
+staff everyone localaccounts _appserverusr admin _appserveradm _lpadmin _appstore _lpoperator _developer _analyticsusers com.apple.access_ftp com.apple.access_screensharing com.apple.access_ssh com.apple.access_remote_ae</p>
+<p># file-and-directory-ownership<br />
+change ownership<br />
+<code>▶ chown maksim:staff workflowy-export.html</code> <code>▶ chown maksim workflowy-export.html</code></p>
+<p>admin can change ownership from other user</p>
+<p><code>▶ sudo chown maksim:staff workflowy-export.html</code></p>
+</body>
+</html>
