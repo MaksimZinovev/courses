@@ -14,6 +14,27 @@
 
 # Table of Contents 
 
+- [Course Details](#course-details)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+  * [1. Course Introduction](#1-course-introduction)
+  * [Elements of web-based applications](#elements-of-web-based-applications)
+  * [2. About the exam](#2-about-the-exam)
+- [Cloud Concepts](#cloud-concepts)
+  * [3. Agenda](#3-agenda)
+  * [4. What is the Cloud?](#4-what-is-the-cloud)
+  * [5. What is Amazon Web Services?](#5-what-is-amazon-web-services)
+  * [6. AWS Free Account](#6-aws-free-account)
+  * [7. AWS Console](#7-aws-console)
+  * [8. Regions and Availability Zones](#8-regions-and-availability-zones)
+  * [9. AWS Support](#9-aws-support)
+  * [10. Summary](#10-summary)
+- [AWS Core Services](#aws-core-services)
+  * [11. AWS Core Services Overview](#11-aws-core-services-overview)
+  * [12. Simple Storage Service](#12-simple-storage-service)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 [TOC]
 
 # Introduction 

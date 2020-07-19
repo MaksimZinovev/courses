@@ -15,6 +15,38 @@
 [TOC]
 
 
+- [Table of Contents](#table-of-contents)
+- [1. Understanding Web Services and APIs](#1-understanding-web-services-and-apis)
+  * [Introduction to web services](#introduction-to-web-services)
+  * [Understanding API Terminology](#understanding-api-terminology)
+  * [Types of APIS](#types-of-apis)
+  * [Map your API](#map-your-api)
+  * [Risks of using services and APIs](#risks-of-using-services-and-apis)
+- [2. Getting Started with API Testing](#2-getting-started-with-api-testing)
+  * [Postman](#postman)
+  * [Install and setup of API challenges](#install-and-setup-of-api-challenges)
+  * [Exploring API](#exploring-api)
+  * [Map the API Challenge](#map-the-api-challenge)
+- [3. API Authorization](#3-api-authorization)
+  * [Overview of authorization and authentication](#overview-of-authorization-and-authentication)
+  * [Using OAuth tokens](#using-oauth-tokens)
+  * [Finding and using bearer tokens](#finding-and-using-bearer-tokens)
+  * [Additional authentication methods](#additional-authentication-methods)
+- [4. Hands-on API Testing](#4-hands-on-api-testing)
+  * [Testing GET calls](#testing-get-calls)
+  * [Challenge: Find the secret](#challenge--find-the-secret)
+  * [Testing POST calls](#testing-post-calls)
+  * [Testing PUT calls](#testing-put-calls)
+  * [Testing DELETE calls](#testing-delete-calls)
+  * [Challenge: Find the 500 Error](#challenge--find-the-500-error)
+- [5. Additional API Testing Considerations](#5-additional-api-testing-considerations)
+  * [Using mocks, stubs, and fakes in API](#using-mocks--stubs--and-fakes-in-api)
+  * [API Automation](#api-automation)
+  * [Performance Testing](#performance-testing)
+  * [Security Testing](#security-testing)
+  * [Testing microservices and the Internet of Things (IoT)](#testing-microservices-and-the-internet-of-things--iot-)
+  * [Next steps](#next-steps)
+
 
 # 1. Understanding Web Services and APIs
 

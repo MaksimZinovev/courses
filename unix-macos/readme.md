@@ -11,7 +11,50 @@ This file was created in [Typora](#https://typora.io/) using [Markdown ](#https:
 [TOC]
 
 ===========
-
+- [Contents](#contents)
+- [Command examples](#command-examples)
+- [Unix manual pages](#unix-manual-pages)
+- [Working directory](#working-directory)
+- [Moving around filesystem](#moving-around-filesystem)
+- [Creat files](#creat-files)
+- [Reading files](#reading-files)
+- [Hacks and Useful examples](#hacks-and-useful-examples)
+- [How to find and delete launch agents](#how-to-find-and-delete-launch-agents)
+- [Create directory](#create-directory)
+- [Title](#title)
+- [Copying files and directories](#copying-files-and-directories)
+- [Deleting files and directories](#deleting-files-and-directories)
+- [Finder aliases in Unix](#finder-aliases-in-unix)
+- [hard-links](#hard-links)
+- [symbolic-links (they work in finder)](#symbolic-links--they-work-in-finder-)
+- [searching-files-and-directories](#searching-files-and-directories)
+- [ownership-and-permissions](#ownership-and-permissions)
+- [groups](#groups)
+- [file-and-directory-ownership](#file-and-directory-ownership)
+- [file-and-directory-permissions](#file-and-directory-permissions)
+- [setting-permissions-using-alpha-notation](#setting-permissions-using-alpha-notation)
+- [setting-permissions-using-octal-notations](#setting-permissions-using-octal-notations)
+- [The root user](#the-root-user)
+- [Command basics](#command-basics)
+- [the-path-variable](#the-path-variable)
+- [system-information-commands](#system-information-commands)
+- [Disk information commands](#disk-information-commands)
+- [Viewing processes](#viewing-processes)
+- [Monitoring processes](#monitoring-processes)
+- [Stopping processes](#stopping-processes)
+- [Text file helpers](#text-file-helpers)
+- [Utility programs](#utility-programs)
+- [Using the command history](#using-the-command-history)
+- [Directing   input and output](#directing---input-and-output)
+- [Configuring your working environment](#configuring-your-working-environment)
+- [Setting command aliases](#setting-command-aliases)
+- [Zsh most useful commands](#zsh-most-useful-commands)
+- [Environment variables](#environment-variables)
+- [Setting the PATH variables](#setting-the-path-variables)
+- [Configuring history with variables](#configuring-history-with-variables)
+- [Customizing the command prompt](#customizing-the-command-prompt)
+- [Logout file](#logout-file)
+- [Unix power tools](#unix-power-tools)
 
 
 
@@ -2080,7 +2123,7 @@ cat fruit.txt | sort | uniq | xargs -I {} mkdir -p ./{}
 
 create folders using names in file_manifest.txt
 
-```
+```sh
 cat file_manifest.txt | xargs mkdir -p .
 ```
 
