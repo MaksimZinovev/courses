@@ -204,3 +204,191 @@ Benefits of using CS:
 
 ## 12. Simple Storage Service
 
+
+
+- object level storage
+- allows to store and retrieve any amount of data 
+- highly scalable
+- highly reliable
+
+
+
+**Structure**
+
+- S3 > bucket(s) > object(s)
+
+
+
+**Storage classes**
+
+- standard (default) - accessed **frequently**
+- reduced redundancy  - to store non-critical data
+- STANDARD_IA, ONEZONE_IA - accessed **infrequently**
+- GLACIER and DEEP ARCHIVE - for data archival, lower costs
+
+
+
+**Other S3 features**
+
+- versioning
+- use for static website
+- cross region replication - better reliability
+- manage access - using Bucket policies
+
+
+
+## 13. Lab - Simple Storage Service Part 1
+
+- sign in to AWS Management Console
+- ↖ "Services" > S3
+- create bucket > name (must be unique across AWS) > create
+- click on the bucket name
+- upload > add file > upload
+- to create folder > select bucket > create folder
+- note: anonymous user cannot access bucket  objects via url link
+
+
+
+To make object public
+
+- go to bucket > permissions > public access settings > edit
+- uncheck Block public access to buckets and objects granted through new access control lists (ACLs) > save > confirm
+- select file/object in bucket  > make public
+- go to bucket > permissions > Block public access > edit
+- uncheck Block public access to buckets and objects granted through any access control lists (ACLs) > save > confirm
+- now file/object can be accessed anonymously 
+
+
+
+## 14. Lab - Simple Storage Service Part 2
+
+- sign in to AWS Management Console
+- ↖ "Services" > S3
+- select bucket > Properties > set up necessary properties
+  - versioning
+  - server access logging
+  - static website hosting
+  - object level logging
+  - default encryption
+  - other
+- to access objet properties
+- select object > properties
+  - storage class
+  - encryption
+  - metadata 
+  - tags
+  - object lock
+
+
+
+## 15.  Lab - S3 - Static Website Hosting
+
+- sign in to AWS Management Console
+- ↖ "Services" > S3
+- properties > Use this bucket to host a website
+- fill in index.html name as default page
+- copy endpoint http://mzinb1.s3-website-ap-southeast-2.amazonaws.com
+- go to bucket > click file >make public
+- visit page using endpoint link
+- page shoould be displaying
+
+
+
+## 16. Amazon Glacier
+
+- used for cold archive storage
+- much lower cost compared to standard class of S3
+
+
+
+**How it works**
+
+- create vault to hold the objects
+- to upload object need to use AWS CLI or SDK
+- Lifecycle feature in S3 can be used to move object to Glacier
+- to retrieve object need to submit job request (takes 3-5 hours to download object)
+- expedited retrieval (higher cost)
+
+
+
+## 17. Lab - Amazon Glacier
+
+- sign in to AWS Management Console
+- ↖ "Services" > S3 Glacier
+- create vault > enter name > next > next > submit
+
+
+
+- to use Lifecycle feature upload object to bucket
+- open bucket > management > add lifecycle rule
+- enter tag or all objects > next
+- current version > add transition > Trnsition to Glacier after <days>
+- next > save
+
+
+
+# Lab: Access and tour AWS console
+
+- sign in and go to AWS Management Console
+- view all services ↖ "Services"
+- view/select region ↗ "Sydney"
+- to add a shortcut click on pushpit icon  ↑
+- drag a any service  to navigation bar
+- click on pushpit icon  ↑
+
+
+
+# Introduction to AWS Identity Access Management (IAM)
+
+**Create new users**
+
+- sign in to AWS Management Console
+- to create new user Services  > IAM
+- Select  ← "Users" > Add user
+- fill in Name 
+- Select AWS Access type 
+-  AWS Management Console access: Check > Programmatic access: Uncheck
+- Require password reset:  Uncheck
+- Console password: abcd
+- next: Permissions > next: Tags
+- Key: team
+- Value: developers
+- create users
+- Note: Ignore  error if it appears while creating Users.
+
+```
+Success
+You successfully created the users shown below. You can view and download user security credentials. You can also email users instructions for signing in to the AWS Management Console. This is the last time these credentials will be available to download. However, you can create new credentials at any time.
+
+Users with AWS Management Console access can sign-in at: https://
+```
+
+- download csv file with sign in link
+- click on the sign in link > enter user name > enter password
+- you are signed in
+
+
+
+**Create IAM Group**
+
+- to create new group  Services  > IAM
+- Select  ← "Groups" > Create New Group
+- Name: Dev > next step
+- Attach policy > AWSCodeDeployFullAccess, AWSCodeDeployRole, Billing (example)
+- next step
+- create group
+
+
+
+**Add IAM user to IAM group**
+
+- Services  > IAM
+
+- Select  ← "Groups" >  select group
+
+- select Users tab
+
+- add users to group > select users > add users
+
+  
+
