@@ -327,6 +327,66 @@ To make object public
 
 
 
+## 18. Virtual Private Cloud 
+
+- VPC service allows to have isolated virtual network in AWS.
+
+- VPC allows launch resources such as EC2.
+
+- You can define a network connectivity.
+
+- You can have different networks for different purposes.
+
+- Each network will have the servers placed in them.
+
+- the servers will then get IP addresses.
+
+- AWS VPC will be allocated a CDIDR block (e.g. 10.0.0.0/16).
+
+- Structure:
+
+  - VPC (CIDR block).
+
+    - subnet1 (CIDR block - subset of VPC CIDR).
+
+    - subnet2  (CIDR block - subset of VPC CIDR).
+
+      - EC2.
+      - EC2.
+
+      
+
+## 19. Lab - Virtual Private Cloud (Creating a Virtual Private Cloud with VPC Wizard)
+
+**Create VPC**
+
+- select region (for example N. Virginia, remember, VPC is a region specific resource)
+- view all services ↖ "Services" > VPC > Launch VPC Wizard
+- VPC with a Single Public Subnet > Select
+- IPv4 CIDR block and the IPv4 CIDR of public subnet will be automatically assigned to you
+- enter subnet name > myfirstvpc
+- Leave the other feilds as default
+- Create VPC
+
+
+
+**Resources Created**
+
+- Dashboard > your VPCs
+- Click Subnets ↖ (one subnet per availability zone)
+- Click Route Tables ↖ (You can see two route tables (one for public subnet and one for private subnet).)
+- Click Internet Gateways ↖ (The Internet Gateway is created and is attached to the public subnet. Internet Gateway connects your VPC to the Internet)
+
+​	
+
+
+
+## 20 Elastic Compute Cloud  Service
+
+
+
+
+
 # Lab: Access and tour AWS console
 
 - sign in and go to AWS Management Console
@@ -335,6 +395,12 @@ To make object public
 - to add a shortcut click on pushpit icon  ↑
 - drag a any service  to navigation bar
 - click on pushpit icon  ↑
+
+
+
+
+
+
 
 
 
