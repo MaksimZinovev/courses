@@ -381,80 +381,466 @@ To make object public
 
 
 
-## 20 Elastic Compute Cloud  Service
+## 20. Elastic Compute Cloud  Service
 
+**Key concepts:**
 
+- Allows to create a virtual server on the cloud.
 
+- You can start or stop the virtual server whenever you want.
 
+- You can terminate on-demand servers whenever you want.
 
-# Lab: Access and tour AWS console
-
-- sign in and go to AWS Management Console
-- view all services ↖ "Services"
-- view/select region ↗ "Sydney"
-- to add a shortcut click on pushpit icon  ↑
-- drag a any service  to navigation bar
-- click on pushpit icon  ↑
-
-
-
-
-
-
-
-
-
-# Introduction to AWS Identity Access Management (IAM)
-
-**Create new users**
-
-- sign in to AWS Management Console
-- to create new user Services  > IAM
-- Select  ← "Users" > Add user
-- fill in Name 
-- Select AWS Access type 
--  AWS Management Console access: Check > Programmatic access: Uncheck
-- Require password reset:  Uncheck
-- Console password: abcd
-- next: Permissions > next: Tags
-- Key: team
-- Value: developers
-- create users
-- Note: Ignore  error if it appears while creating Users.
-
-```
-Success
-You successfully created the users shown below. You can view and download user security credentials. You can also email users instructions for signing in to the AWS Management Console. This is the last time these credentials will be available to download. However, you can create new credentials at any time.
-
-Users with AWS Management Console access can sign-in at: https://
-```
-
-- download csv file with sign in link
-- click on the sign in link > enter user name > enter password
-- you are signed in
-
-
-
-**Create IAM Group**
-
-- to create new group  Services  > IAM
-- Select  ← "Groups" > Create New Group
-- Name: Dev > next step
-- Attach policy > AWSCodeDeployFullAccess, AWSCodeDeployRole, Billing (example)
-- next step
-- create group
-
-
-
-**Add IAM user to IAM group**
-
-- Services  > IAM
-
-- Select  ← "Groups" >  select group
-
-- select Users tab
-
-- add users to group > select users > add users
+- You can host various types of workloads on the servers.
 
   
+
+  >**Q:** Do you get charged for a 'stopped' instance on EC2?
+  >
+  >**A:**  No, For stopped instances, AWS does not charge for any instance usage fees, however, you will be charged for any other resources that are attached to your stopped instances such as EBS volume or S3 storage.
+
+
+
+**Attributes of EC2 instance:**
+
+- **AMI** - Amazon Machine Image (Win, Linux and others).
+- Software preinstalled. For example SQL server.
+- **The instance type** - CPU, memory, etc.
+- **VPC** - where it will be located.
+- **Security Groups** - controls the flow of traffic.
+- **Volumes** - storage.
+- **Tags** - metadata.
+
+Features:
+
+- **Different pricing models:**
+  
+- **on demand** - create and terminate at any point in time.
+  
+- **Monitor instance**
+
+  - this comes automativally with Cloudwatch service.
+
+- Different categories optimized for different **workloads**
+
+  - Compute Optimized
+
+  - Memory Optiized
+
+  - etc.
+
+    
+
+## 21. Lab - Elastic Compute Cloud
+
+Overview
+
+- create EC2 instance
+- choose Windows AMI
+- connect to the server
+
+
+
+Steps
+
+- sign in AWS management console
+
+- compute > EC2
+
+- redirected to **EC2 dashboard** showing status of EC2 instances
+
+- click launch **new instance**
+
+- scroll down and select Microsof Windows Server 2016 Base
+
+- choose **instance type** (CPU, memory, other resources): 
+
+- **note**: cost per hour will depend on CPU, memory and region
+
+  
+
+    >**Q:** Will you be charged if ypou use free EC2  "t2micro"  tier ?
+    >
+    >**A:**  Only if you consume 750 hours per month
+
+
+
+- **configure instance details**: can leave as it is.
+
+- **add storage**: can leave as it is.
+
+- **add tags**: can leave as it is.
+
+- **configure security group**: can leave rule settings as it is and add group name and descroption.
+
+- review instance launch: review.
+
+- click **launch**.
+
+- create **key pair** in order to be able to generate password later.
+
+- download and **save key pair file in a safe place.**
+
+- on the dashboard page new instance will be displayed.
+
+- in the description you can see **public IP**(IPv4) which can be used to connect to the server.
+
+- click **connect** button.
+
+- click **get password**.
+
+- click **choose file** and locate key pair file previously saved.
+
+- click **decrypt password**.
+
+- copy **password**.
+
+- click **download remote desktop file**.
+
+- **double click on remote desktop file** the file 
+
+- **click on connect** and **fill in the password.**
+
+- you will be redirected to Windows screen.
+
+  
+
+## 22. Lab -The AWS Marketplace
+
+**Overview** 
+
+- Create Wordpress solution using AWS Marketplace
+
+
+
+**Details**
+
+- Using AWS Marketplace you can deploy custom-base solutions on AWS.
+- Example: AMI instance with Ubuntu and preinstalled Wordpress.
+- You can access AWS Marketplace during Launching EC2 workflow
+  - Step 1 (Choose an AMI) 
+  - ↖AWS Marketplace
+
+>**Q**: Do you pay for preinstalled software in addition to EC2 instance costs?
+>
+>**A**:  It depends. Some solutions have no costs related to software. There are also solutions which include both costs (usually charged per hour). The costs are shown on the page when choosing AMI.
+
+- When creating new instance you can reuse existing key-pair file.
+- You can add tags after the EC2 instance has been created.
+  - EC2 dashboard
+  - Tags - click tab in the middle of the page.
+- Copy/paste DNS name from dashboard to browser search bar
+
+
+
+## 23. Lab - EC2 Pricing Models
+
+**Overview**
+
+- EC2 Pricing Models
+
+
+
+**Pricing models**
+
+- **on-demand** 
+  - the most flexible pricing option.
+  - not hte most cheapest.
+  - cost calculated based on the running time of the instance.
+- **spot pricing**
+  - up to 90% savings on costs.
+  - the instances are available on spare capacity available in AWS.
+  - if AWS runs out of capacity the compute capacity will be taken away.
+  - when the above happens you can .
+    - hibernate.
+    - stop.
+    - terminate EC2 instance.
+  - this pricing option is best for workloads that can be interrupted.
+
+- reserved pricing
+  - pay an upfront price and reserve an instance type.
+  - can save up to 75%.
+  - different types
+    - **Standard** - if you are sure of the type of workload (fixed amount of storage, memory and CPUs ) that will run on the EC2 instance.
+    - **Convertible** - allows to change  the attributes of the Reserved Instance. It is possible only if the result yields in Reserved Instnces of equal or greater value.
+    - **Scheduled** - can launch instnces during specific time windows.
+
+
+
+How to view different types of instances:
+
+
+
+- go to AWS console.
+- click EC2.
+
+- ↖ Instances > Spot Requests or Reserved Instances
+
+**Spot Requests**
+
+- click tab Pricing History.
+- see on-demand price and price of Spot instance depending on availability zone.
+- click Request Spot Instance if you are ok with the price
+
+
+
+**Reserved Instances**
+
+- click Purchase Reserved Instance
+- configure: platform, instance type, term (1 year / 3 years), offering class (convertible / standard), payment option
+- click search 
+
+
+
+## 24 Elastic Block Storage
+
+**Overview**
+
+- block storage for EC2 instances.
+- different types of vulumes are available.
+- you can have multiple volumes attached to an instance.
+
+
+
+EC2
+
+- root volume (set by default and used for OS and underlying configuration purposes).
+- data volume  (used for applicatio or data).
+
+- data volume  (used for applicatio or data).
+
+EBS Types
+
+- general purpose SSD - typical workloads such as Web servers.
+- provisioned IOPS - more resourceintensive workloads such as databases (more expencsive compared to general purpose).
+- throughput optimised HDD - workloads that need more throughput on the volume such as Big Data applications.
+- cold HDD - archive storage.
+
+
+
+Other features
+
+- enable encryption.
+- create snapshots.
+- a volume can be attached to any instance in that availability zone.
+
+
+
+## 25. Lab: EBS Volumes
+
+**Overview**
+
+- How to work with EBS volumes
+
+**Preconditions**
+
+- EC2 instance has been created
+
+
+
+Instructions
+
+- open AWS console
+
+- navigate to EC2 dashboard > Instances
+
+- ↖ Iclick Elastic Block Storage
+
+- view existing volumes
+
+- click Create Volume button
+
+  
+
+- select Volume Type
+
+- fill in Size amount
+
+- select  the same Availability Zone as your existing EC2 instance
+
+- add name tag
+
+- click Create Volume
+
+  
+
+- navigate to EC2 Dashboard (new volume should display and have "available" state)
+
+- select your new volume
+
+- click Actions
+
+- click Attach Volume
+
+- select instance
+
+- click Attach
+
+- new volume should have "in-use" state
+
+If you have EC2 with installed Windows
+
+- open Server Manager
+- navigate to Stprage Services > Volumes > Disks
+- right-click
+- click Bring Online
+- right-click
+- click Initialize
+- right-click
+- click New Volume
+- go through Wizard
+- open This PC
+- new Volume should be visible
+
+
+
+## 26. Costing in AWS
+
+Available tools
+
+- **Pricing Calculator** - allows to get an indicative pricing on hosting resources in AWS.
+- **Billing Section** - Can see the costs to date and the biling details.
+- **Cost Explorer** - Allows you to analyse your spend. But you need to enable this in advance.
+
+
+
+**Pricing Calculator**
+
+- create estimate
+- select region
+- add service
+- select EC2 specification 
+- select EBS size
+- view total monthly cost
+
+
+
+**Billing Section** 
+
+- go to EC2 Dashboard
+- ↗click acc > My Billing Dashboard
+- view monthly cost  to date
+- ↗click Bill Deatils 
+
+
+
+**Cost Explorer**
+
+- go to EC2 Dashboard
+- ↗click acc > My Billing Dashboard
+- ↖ click Cost Explorer
+
+>To use Cost Explorer you need to enable it. It can take up to 24 hours to view the cost explorer data.
+
+- you can filter
+  - period
+  - categories
+- you can see forecast after you used services for 1-2 months
+- you can save reports 
+
+
+
+## 27. Lab : Cleaning Up Resources 
+
+Overview
+
+- How to terminate existing EC2 instances
+
+
+
+Stop Instance
+
+- go to AWS console
+- go to instances
+- select instances
+- actions > Instance State > stop
+
+>**Q**:  Do you get charged when instance in the "stopped" state
+>
+>**A**:  No. However, for example if you have combined EBS volume attached to your instnces and  exceeding free limit,  you still will be charged. EBS is separate resource.
+
+
+
+Terminate Instance
+
+- go to AWS console
+- go to instances
+- select instances
+- actions > Instance State > stop
+
+>When terminating instance you can keep attached volume so it can be attached to another instance.
+>
+>When terminating instance all additional attached volumes will not be deleted. You need to select  > actions > delete.
+
+
+
+## 28. Benefits of Moving to AWS
+
+- pay-as-you-go: cost effective model for infrastructure hosting.
+-  cloud services: new services are rollout.
+
+
+
+## 29. Summary
+
+What's covered
+
+- how to work with S3 service.
+- how to host a static website.
+- what is Amazon Glacier.
+- what is the default VPC.
+- what is EC2.
+- how to spin up an EC2 instance.
+- AWS marketplace.
+- EC2 pricing models.
+- what is EBS.
+- benefits of moving to the cloud.
+
+
+
+
+
+# Cloud Architechture Design 
+
+
+
+## 30. Agenda
+
+Overview
+
+- service continuity.
+- AWS organization.
+- TCO calculator.
+- cost allocation tags.
+
+
+
+## 31. Service Continuity
+
+**Important aspects** that need to be considered when designing an application (applicable for most applications)
+
+- fault tolerance - if a fault occurs at the infrastructure level, you still need to ensure services can be made available.
+- high availability - if infrastructure goes down, you need to ensure the right measures are in place to ensure the application is still available.
+
+
+
+Some aspects that are available in AWS for maintaining service or application continuity
+
+- **Availability Zones  and Regions** - deploy EC2 instances across multiple availability zones. If one zone goes down, application still can use other zones. For higher availability an for disaster recovery, deploy secondary solutions to multiple regions.
+- **Elastic Load Balancer** - helps to distributetaffic to your underlying EC2 instances. If one EC2 instance goes down, Elastic Load Balancer can direct traffic to another EC2 instance.
+
+Important design concepts
+
+- always decouple components of your application.
+- do not have tight integration between application components.
+- always design with failure in mind.
+- make use of features  available in AWS.
+
+
+
+## 32. AWS Organization
+
+
+
+
 
