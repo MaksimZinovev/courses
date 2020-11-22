@@ -137,4 +137,4 @@ dmypy.json
 **/.DS_Store
 
 # Secrets
-tests/secrets.yaml
+aws-cloud-practitioner-whizlabs/lab_launching_ec2_ssh/keypair.pem
