@@ -840,6 +840,110 @@ Important design concepts
 
 ## 32. AWS Organization
 
+Overview
+
+- Account management service.
+- Manage all of your accounts.
+- Get consolidated bills.
+
+
+
+Organization can have multiple AWS accounts. One account for each department, for example
+
+- Logistics
+- HR
+- Procurement
+- IT
+
+Why use Account Management Service?
+
+- With the large number of AWS accounts, Account Management Service, helps to simplify their management.
+- Get consolidated bills. The master account can get a consolidated bill for all member accounts.
+- Can get volume pricing discounts.
+- Can create Service control policies at the organizational level.
+
+How to access Account Management Service?
+
+- AWS console.
+- ↗click account > My Organization.
+- Create Organization (current account will be the Master account).
+- Verify master account  using the link in email.
+
+How to add accounts to Organization?
+
+- Go to AWS Organizations
+- click Add account
+- Acceppt invitation
+
+
+
+## 33. TCO Calculator
+
+TCO - Total Cost of Ownership
+
+Why use TCO calculator?
+
+- allows to estimate the cost savings when using AWS.
+- allows to modify assumptions that best meet your business model.
+
+Example, TCO can show savings and detailed comparison between cost of on-premises  ownership and cost of AWS services.
+
+
+
+TCO report includes the following sections
+
+- 3 years cost breakdown.
+- environment details.
+- calculations.
+- methodology.
+- assumptions.
+- FAQ.
+
+
+
+## 34. Cost Allocation Tags
+
+Why use cost allocation tags?
+
+- tags are used to organize resources in AWS. 
+- Cost Allocation Tags can be used to track resources at a detailed level.
+- common use case - when you want to have bills department wise or Ocst Center wise.
+
+
+
+How to use cost allocation tags?
+
+- go to EC Dashboard
+- click Tags tab
+- Add/Edit Tags
+
+
+
+How to activate tags?
+
+- ↗click account > Billing Dashboard
+- ↖click Cost allocation tags
+- ↖click Activate (activates suit-in tags)
+- select user-defined  tags
+- click Activate (activates user-defined tags)
+
+
+
+How to use cost allocation tags to view costs
+
+- ↗click account > Billing Dashboard
+- ↖click Cost  Explorer
+- ↗click Explore Costs
+- ↗click Tags
+
+
+
+## 35. AWS Trusted  Advisor
+
+
+
+
+
 
 
 

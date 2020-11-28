@@ -138,3 +138,4 @@ dmypy.json
 
 # Secrets
 aws-cloud-practitioner-whizlabs/lab_launching_ec2_ssh/keypair.pem
+**/*.pem

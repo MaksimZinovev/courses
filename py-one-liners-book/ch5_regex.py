@@ -202,7 +202,7 @@ def test_validate_time_format_smarter():
 
 
 def test_detect_words_that_contain_duplicate_characters():
-    """ Demonstrate how to reuse parts you've already matched - named groups.
+    """ Demonstrate how to reuse parts you've already matched (named groups) to detect duplicate characters.
     Syntax:
     (?P<name>...)
     """
@@ -217,4 +217,19 @@ def test_detect_words_that_contain_duplicate_characters():
     duplicates = re.findall('([^\s]*(?P<x>[^\s])(?P=x)[^\s]*)', text)
     logging.info("\n" + pformat(duplicates))
 
-# Page 10
+
+
+def test_detect_words_repetitions():
+    """ Demonstrate how use named groups to detect word repetitions.
+    Syntax:
+    (?P<name>...)
+    Note that match=' ... ' may not be showing the full substring
+    """
+
+    text = """30 days and the fifth and last of five months to have a length of fewer than 31 days """
+
+    style_problems = re.search('\s(?P<x>[a-z]+)\s+([a-z0-9]+\s+){0,20}(?P=x)\s', text )
+    logging.info("\n" + str(style_problems))
+    print("\n" + style_problems.group())
+
+
