@@ -150,10 +150,9 @@ pm.test("Status code name has string", () => {
 
 ```
 
+## Basic tests
 
-## Basic tests 
-
-```js 
+```js
 pm.test("All books should have a title", () => {
     const books = pm.response.json();
     pm.expect(books.every(book => {
@@ -163,10 +162,9 @@ pm.test("All books should have a title", () => {
 
 ```
 
+Refactored
 
-Refactored 
-
-```js 
+```js
 
 const titleIsDefined = (book) => {
     return book.title !== undefined;
@@ -179,9 +177,9 @@ pm.test("All books should have a title", () => {
 
 ```
 
-## Using other libraries 
+## Using other libraries
 
-```js 
+```js
 
 const moment  = require('moment');
 
@@ -195,9 +193,10 @@ obj = {
 pm.collectionVariables.set('book', JSON.stringify(obj));
 
 ```
-Test 
 
-```js 
+Test
+
+```js
 
 const moment = require('moment'); 
 pm.test('Create date is equal to today', () => {
@@ -208,12 +207,25 @@ pm.test('Create date is equal to today', () => {
 
 ```
 
-## Creating collections 
+## Using dynamic variables to geerate fake data
 
+Example body demonstrating how to use dynamic variables to ganerate fake data
+
+```JSON
+{
+    "email": "troytiru+pm{{$randomInt}}@gmail.com", 
+    "firstName": "{{$randomFirstName}}",
+    "lastName": "{{$randomLastName}}",
+    "householdId": {{householdId}}
+}
+
+```
+
+## Creating collections
 
 Create collection and add request.
 
-POST http://localhost:3000/households
+POST <http://localhost:3000/households>
 
 ```cURL
 
@@ -226,10 +238,10 @@ curl --location 'http://localhost:3000/households' \
 
 ```
 
-Create users request 
+Create users request
 POST
 
-```curl 
+```curl
 
 curl --location 'http://localhost:3000/users' \
 --header 'Content-Type: application/json' \
@@ -243,11 +255,11 @@ curl --location 'http://localhost:3000/users' \
 
 ```
 
-Add book to whishlist 
+Add book to whishlist
 
-POST 
+POST
 
-```curl 
+```curl
 
 curl --location 'http://localhost:3000/wishlists/1/books/1' \
 --header 'Content-Type: application/json' \
@@ -261,7 +273,7 @@ curl --location 'http://localhost:3000/wishlists/1/books/1' \
 
 ```
 
-GET household books 
+GET household books
 
 ```curl
 
@@ -273,5 +285,147 @@ curl --location 'http://localhost:3000/households/1/wishlistBooks' \
 ```
 
 To set Variable
-1. Send request 
-2. Tests > Snippets > Set global variable 
+
+1. Send request
+2. Tests > Snippets > Set global variable
+
+## Collection runner  
+
+Can be used to run multiple requests in sequence
+
+## Using variables
+
+Add variable "host": "http://localhost:3000/users"
+
+## Pre-request scripts
+
+Pre-request script can set up state of request before run.
+
+```js
+const users = [
+    {
+        email: "taylorn@gmail.com",
+        firstName: "Nate",
+        lastName: "Taylor"
+    },
+        {
+        email: "jon@mailinator.com",
+        firstName: "Jonathan",
+        lastName: "Edwards"
+    },
+        {
+        email: "brooks@gmail.com",
+        firstName: "Thomas",
+        lastName: "Brook"
+    },
+        {
+        email: "samt@gmail.com",
+        firstName: "Sami",
+        lastName: "Tailwind"
+    }
+]
+
+// Get one user 
+
+const user = _.sample(users);
+
+pm.globals.set("firstName", user.firstName);
+pm.globals.set("lasttName", user.lastName);
+pm.globals.set("email", user.email);
+
+
+```
+
+Body
+
+```json
+
+{
+    "email": "{{email}}", 
+    "firstName": "{{firstName}}",
+    "lastName": "{{lastName}}",
+    "householdId": {{householdId}}
+}
+```
+
+## Data files - data driven tests
+
+1. Go to  request body and create raw json request:
+
+Prerequisites:
+
+1. Create json file and save in "datafiles" folder
+
+```json
+
+{
+    "title": "{{title}}",
+    "author": "{{author}}",
+    "isbn": "{{isbn}}",
+    "releaseDate": "{{publicationDate}}"
+}
+
+```
+
+2. Select collection > Run > Run configuration >
+   1. Iterations > 2
+   2. Select file > select json file
+   3. Click preview
+   4. Save responses > enabled
+3. If the number of iteration is less than number of records in data file, then last record will be used.
+
+
+
+## Initializing test data 
+
+
+Basic frlow 
+
+1. Set up variables 
+2. Create users 
+3. Add books 
+4. Clean up data
+
+### 1. Set up variables 
+
+Can use 1st request to set up variables in pre-request script
+
+
+Example for getting list of books 
+
+```js 
+
+pm.globals.set('numberOfUsers', 2);
+pm.globals.set('currentUserCounts', 0);
+
+pm.globals.set('numberOfWhishListsAdds', 4);
+pm.globals.set('currentWhishListCount', 0);
+
+
+pm.globals.set('wishlistIds', []);
+
+
+/// Get existing books 
+
+
+const getBooks = {
+    url: `http://${pm.environment.get("host")}/books`,
+    method: 'GET',
+    header: 'G-TOKEN:ROM831ESV'
+}
+
+pm.sendRequest(getBooks, (err, books) => {
+    const ids = _.map(books.json(),
+        (book) => {
+            return book.id;
+        });
+    pm.globals.set("bookIds", ids)
+})
+
+
+```
+
+## Loop over users 
+
+
+Continue https://app.pluralsight.com/course-player?clipId=6c7b1abf-dd7b-46e3-bd0c-7e5e582850aa
